@@ -1,25 +1,27 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   calculateTotal,
   getCurrencySymbol,
 } from '../../utilities/utilities.js';
 
-// Import the changeItemQuantity() action creator.
-import { changeItemQuantity } from './cartSlice.js';
+import { selectCurrencyFilter } from '../currencyFilter/currencyFilterSlice.js';
+import { changeItemQuantity, selectCart } from './cartSlice.js';
 
-export const Cart = (props) => {
-  const { cart, currencyFilter, dispatch } = props;
+export const Cart = () => {
+
+  const cart = useSelector(selectCart)
+  const currencyFilter = useSelector(selectCurrencyFilter)
+  const dispatch = useDispatch()
 
   const onInputChangeHandler = (name, input) => {
-    // If the user enters a bad value...
     if (input === '') {
       return;
     }
 
-    // Otherwise, convert the input into a number and pass it along as the newQuantity.
     const newQuantity = Number(input);
 
-    // Dispatch an action to change the quantity of the given name and quantity.
     dispatch(changeItemQuantity(name, newQuantity))
   };
 

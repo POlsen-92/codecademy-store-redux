@@ -1,9 +1,14 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { currenciesData } from '../../data.js';
-import { setCurrency } from './currencyFilterSlice.js';
+import { selectCurrencyFilter, setCurrency } from './currencyFilterSlice.js';
 
-export const CurrencyFilter = ({ currencyFilter, dispatch }) => {
+export const CurrencyFilter = () => {
+  const currencyFilter = useSelector(selectCurrencyFilter)
+
+  const dispatch = useDispatch()
+  
   const onClickHandler = (currency) => {
     dispatch(setCurrency(currency));
   };

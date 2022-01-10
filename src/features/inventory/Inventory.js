@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   calculatePrice,
   getCurrencySymbol,
 } from '../../utilities/utilities.js';
-import { addItem } from '../cart/cartSlice.js';
-import { loadData } from './inventorySlice';
 
-export const Inventory = ({ inventory, currencyFilter, dispatch }) => {
+import { addItem } from '../cart/cartSlice.js';
+import { selectCurrencyFilter } from '../currencyFilter/currencyFilterSlice.js';
+import { loadData, selectFilteredInventory } from './inventorySlice';
+
+export const Inventory = () => {
+  const inventory = useSelector(selectFilteredInventory)
+  const currencyFilter = useSelector(selectCurrencyFilter)
+
+  const dispatch = useDispatch()
+
   const onMount = () => {
     dispatch(loadData());
   };

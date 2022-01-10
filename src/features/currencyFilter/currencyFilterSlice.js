@@ -1,3 +1,5 @@
+import { getCurrencySymbol } from "../../utilities/utilities";
+
 // REDUCER FUNCTION
 const initialCurrencyFilter = 'USD';
 export const currencyFilterReducer = (
@@ -21,3 +23,12 @@ export const setCurrency = (currency) => {
     payload: currency,
   };
 };
+
+// SELECTOR FUNCTIONS
+export const selectCurrencyFilter = (state) => state.currencyFilter
+
+export const selectCurrencySymbol = (state) => {
+  const currencyFilter = selectCurrencyFilter(state)
+
+  return getCurrencySymbol(currencyFilter)
+}

@@ -1,4 +1,5 @@
 import { inventoryData } from '../../data.js';
+import { selectSearchTerm } from '../searchTerm/searchTermSlice.js';
 
 // REDUCER FUNCTION
 const initialInventory = [];
@@ -20,3 +21,16 @@ export const loadData = () => {
     payload: inventoryData,
   };
 };
+
+// SELECTOR FUNCTIONS
+
+export const selectInventory = (state) => state.inventory
+
+export const selectFilteredInventory = (state) => {
+  const inventory = selectInventory(state);
+  const searchTerm = selectSearchTerm(state);
+
+  return inventory.filter((item) => 
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+}
+
