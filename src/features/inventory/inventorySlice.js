@@ -1,6 +1,6 @@
-import { inventoryData } from '../../../data.js';
+import { inventoryData } from '../../data.js';
 
-export const loadData = (data) => {
+export const loadData = () => {
   return {
     type: 'inventory/loadData',
     payload: inventoryData,
