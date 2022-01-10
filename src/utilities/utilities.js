@@ -30,3 +30,6 @@ export function calculatePrice(price, currency) {
     }
   }
   
+  export function getFilteredItems(inventory, searchTerm) {
+    return inventory.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  }

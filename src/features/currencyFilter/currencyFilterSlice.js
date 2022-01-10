@@ -1,3 +1,4 @@
+// REDUCER FUNCTION
 const initialCurrencyFilter = 'USD';
 export const currencyFilterReducer = (
   currencyFilter = initialCurrencyFilter,
@@ -13,6 +14,7 @@ export const currencyFilterReducer = (
   }
 };
 
+// ACTION FUNCTIONS
 export const setCurrency = (currency) => {
   return {
     type: 'currencyFilter/setCurrency',

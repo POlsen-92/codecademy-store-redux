@@ -1,12 +1,6 @@
 import { inventoryData } from '../../data.js';
 
-export const loadData = () => {
-  return {
-    type: 'inventory/loadData',
-    payload: inventoryData,
-  };
-};
-
+// REDUCER FUNCTION
 const initialInventory = [];
 export const inventoryReducer = (inventory = initialInventory, action) => {
   switch (action.type) {
@@ -17,4 +11,12 @@ export const inventoryReducer = (inventory = initialInventory, action) => {
       return inventory;
     }
   }
+};
+
+// ACTION FUNCTION
+export const loadData = () => {
+  return {
+    type: 'inventory/loadData',
+    payload: inventoryData,
+  };
 };

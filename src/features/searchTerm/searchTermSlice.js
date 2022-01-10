@@ -1,3 +1,36 @@
+// SETTING STATE
+const initialSearchTerm = '';
+
+// REDUCER FUNCTION
+export const searchTermReducer = (searchTerm = initialSearchTerm, action) => {
+    switch(action.type) {
+        case 'searchTerm/setSearchTerm': {
+            return action.payload
+        }
+        case 'searchTerm/clearSearchTerm': {
+            return ''
+        }
+        default: {
+            return searchTerm;
+        }
+    }
+}
+
+
+// ACTION FUNCTIONS
+export const setSearchTerm = (term) => {
+    return {
+        type: 'searchTerm/setSearchTerm',
+        payload: term
+    }
+}
+
+export const clearSearchTerm = () => {
+    return {
+        type: 'searchTerm/clearSearchTerm'
+    }
+}
+
 /*
 Extra Credit:
 1. Create a function called searchTermReducer that can handle the following action types:
@@ -15,4 +48,3 @@ Extra Credit:
     * See SearchTerm.js for how this will be used.
 
 */
-
